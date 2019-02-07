@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Costalatta Cars</string>
+    <string name="title_activity_main">Car Dealership</string>
+    <string name="car_price">Quel est le prix de votre véhicule?</string>
+    <string name="cash_down_payment">What is your cash down payment?</string>
+    <string name="choose_loan_term">Choissisez le temps de boursse.</string>
+    <string name="years3">3 years</string>
+</resources>
