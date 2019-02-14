@@ -24,13 +24,14 @@ public class MainActivity extends AppCompatActivity {
     private CarLoan loan;
     // Formatters
     NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.getDefault());
+    // NumberFormat percentage = NumberFormat.getPercentInstance(Locale.getDefault());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Link controller variables to Vew
+        // Link controller variables to View
         carPriceEditText = findViewById(R.id.carPriceEditText);
         downPaymentEditText = findViewById(R.id.downPaymentEditText);
         loanTermRadioGroup = findViewById(R.id.loanTermRadioGroup);
@@ -71,10 +72,17 @@ public class MainActivity extends AppCompatActivity {
         // Share all data
         loanSummaryIntent.putExtra("MonthlyPayment", currency.format(loan.monthlyPayment()));
         loanSummaryIntent.putExtra("CarPrice", currency.format(loan.getPrice()));
+        loanSummaryIntent.putExtra("TaxRate", (CarLoan.OCEANSIDE_TAX_RATE * 100.0) + "%");
+        loanSummaryIntent.putExtra("TaxAmount", currency.format(loan.taxAmount()));
+        loanSummaryIntent.putExtra("DownPayment", currency.format(loan.getDownPayment()));
+        loanSummaryIntent.putExtra("TotalCost", currency.format(loan.totalCost()));
+        loanSummaryIntent.putExtra("BorrowedAmount", currency.format(loan.borrowedAmount()));
+        loanSummaryIntent.putExtra("InterestAmount", currency.format(loan.interestAmount()));
+        loanSummaryIntent.putExtra("LoanTerm", loan.getLoanTerm() + " years");
         // Do for all variables we need...
 
+        // Start loan information display activity.
         startActivity(loanSummaryIntent);
-
 
     }
 
